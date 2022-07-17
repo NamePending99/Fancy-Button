@@ -1,0 +1,129 @@
+body {
+    /* Prevents scrollbar from appearing during fireworks animation. */
+    overflow: hidden;
+}
+
+.mainHeader {
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.button-main {
+    background-color: hsl(195, 100%, 53%);
+    font-size: 22px;
+    padding: 75px 50px;
+    border-radius: 50%;
+    transition-duration: 0.4s;
+    border: none;
+
+    /* Sets position to center of screen*/
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    cursor: pointer;
+
+    animation: breath-animation 2s ease-out infinite;
+}
+
+.hide {
+    opacity: 0;
+}
+
+.button-main:hover {
+    background-color: rgb(255, 65, 65);
+    color: white;
+    animation: breath-animation-hover 1s ease infinite;
+    border-radius: 0%;
+}
+
+.finalText {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-family: sans-serif;
+    font-style: oblique;
+    font-size: 20px;
+}
+
+@keyframes breath-animation {
+    10% {
+        box-shadow: 0 0 0 30px rgba(6, 211, 238, 0.3);
+        /* Animation inspired by: https://vmar76.medium.com/using-css-animations-to-visualize-breathing-techniques-7a20ee0aed5a */
+    }
+}
+
+@keyframes breath-animation-hover {
+    10% {
+        box-shadow: 0 0 0 30px rgba(238, 6, 6, 0.3);
+    }
+}
+
+
+/* --------------- FIREWORK CSS --------------- */
+
+
+@keyframes firework {
+    0% {
+        transform: translate(-50%, 60vh);
+        width: 0.5vmin;
+        opacity: 1;
+    }
+
+    50% {
+        width: 0.5vmin;
+        opacity: 1;
+    }
+
+    100% {
+        width: 45vmin;
+        opacity: 0;
+    }
+}
+
+
+.firework,
+.firework::before,
+.firework::after {
+    --top: 60vh;
+    content: "";
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1vmin;
+    aspect-ratio: 1;
+
+    background:
+        /* Random backgrounds */
+        radial-gradient(circle, rgb(255, 0, 0) 0.2vmin, #0000 0) 50% 00%,
+        radial-gradient(circle, rgb(255, 0, 0) 0.3vmin, #0000 0) 00% 50%,
+        radial-gradient(circle, rgb(255, 0, 0) 0.5vmin, #0000 0) 50% 99%,
+        radial-gradient(circle, rgb(255, 0, 0) 0.2vmin, #0000 0) 99% 50%,
+        radial-gradient(circle, rgb(255, 0, 0) 0.3vmin, #0000 0) 80% 90%,
+        radial-gradient(circle, rgb(255, 0, 0) 0.5vmin, #0000 0) 95% 90%,
+        radial-gradient(circle, rgb(255, 0, 0) 0.5vmin, #0000 0) 10% 60%,
+        radial-gradient(circle, rgb(255, 0, 0) 0.2vmin, #0000 0) 31% 80%,
+        radial-gradient(circle, rgb(255, 0, 0) 0.3vmin, #0000 0) 80% 10%,
+        radial-gradient(circle, rgb(255, 0, 0) 0.2vmin, #0000 0) 90% 23%,
+        radial-gradient(circle, rgb(255, 0, 0) 0.3vmin, #0000 0) 45% 20%,
+        radial-gradient(circle, rgb(255, 0, 0) 0.5vmin, #0000 0) 13% 24%;
+
+    background-size: 1.5vmin 1.5vmin;
+    background-repeat: no-repeat;
+    animation: firework 3s 1;
+}
+
+.firework::before {
+    transform: translate(-50%, -50%) rotate(25deg) !important;
+}
+
+.firework::after {
+    transform: translate(-50%, -50%) rotate(-37deg) !important;
+}
+
+/* Fireworks source: https://codepen.io/alvaromontoro/pen/QWQWjrj */
