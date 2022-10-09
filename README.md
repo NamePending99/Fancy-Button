@@ -1,4 +1,4 @@
-# Just-a-button
+# Fancy-Button
 This is just a button. Feel free to download and experience the Button.
 
 Project created using:
